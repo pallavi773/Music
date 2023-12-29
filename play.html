@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music PlayList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
+    integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="play.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">MusicPlayList</a>
+        <nav class="menu">
+            <a href="index.html" class="back">BacktoHomepage</a>
+        </nav>
+    </header>
+    <section class="Home">
+        <div class="content">
+            <h1>Welcome to Latest Songs PlayList</h1>
+        </div>
+        <div class="content_music">
+            <h2 id="title">Song1</h2>
+            <h3 id="artist">Ashi</h3>
+
+            <div class="content_img">
+                <img src="Images/s1.jpeg">
+            </div>
+            <div class="content_audio">
+                <audio src="Songs/s1.mp3"></audio>
+                <div class="music_control">
+                    <i class="fa fa-backward" id="prev" title="Previous"></i>
+                    <i class="fa fa-play-circle" id="play" title="Play"></i>
+                    <i class="fa fa-forward" id="next" title="next"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+
+    const music = document.querySelector("audio");
+    const img = document.querySelector("img");
+    const play = document.getElementById("play");
+    const title = document.getElementById("title");
+    const artist = document.getElementById("artist");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+
+    const songs=[{
+        name:"s1",
+        title:"Song1",
+        artist:"Ashi",
+    },
+    {
+        name:"s2",
+        title:"Song2",
+        artist:"Yashuuuuu",
+    },
+    {
+        name:"s3",
+        title:"Song3",
+        artist:"Pallavi",
+    }
+]
+
+let isplaying=false;
+const playmusic=()=>{
+    isplaying=true;
+    music.play();
+    play.classList.replace("fa-play-circle","fa-play-circle");
+}
+const pausemusic=()=>{
+    isplaying=false;
+    music.pause();
+    play.classList.replace("fa-pause-circle","fa-play-circle");
+}
+
+play.addEventListener('click',()=>{
+    if(isplaying){
+        pausemusic();
+    }else{
+        playmusic();
+    }
+});
+
+const loadsong = (songs)=>{
+    title.textContent=songs.title;
+    artist.textContent=songs.artist;
+    music.src="Songs/"+songs.name+".mp3";
+    img.src="Images/"+songs.name+".jpeg";
+
+}
+
+songIndex=0;
+
+const nextsong=()=>{
+    songIndex = (songIndex + 1) % songs.length;
+    loadsong(songs[songIndex]);
+};
+
+const prevsong=()=>{
+    songIndex = (songIndex - 1 + songs.length) % songs.length;
+    loadsong(songs[songIndex]);
+};
+
+next.addEventListener('click',nextsong);
+prev.addEventListener('click',prevsong);
+
+</script>
+</html>

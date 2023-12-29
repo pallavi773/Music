@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music PlayList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
+    integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="playmusicvideo.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">MusicPlayList</a>
+        <nav class="menu">
+            <a href="index.html" class="back">BacktoHomepage</a>
+        </nav>
+    </header>
+    <section class="Home">
+        <div class="content">
+            <h1>Welcome to Mass video Songs</h1>
+        </div>
+        <div class="content_video">
+            <h2 id="title1">Video1</h2>
+            <h3 id="artist1">Sharath</h3>
+            </div>
+            <div class="content_video1">
+                <video controls loop autoplay>
+                    <source src="Videos/v7.mp4" type="video/mp4">
+                </video>
+                <div class="video_control">
+                    <i class="fa fa-backward" id="prev" title="Previous"></i>
+                    <i class="fa fa-play-circle" id="play" title="Play"></i>
+                    <i class="fa fa-forward" id="next" title="next"></i>
+                </div>
+            </div>
+    </section>
+</body>
+<script>
+
+    const music = document.querySelector("video");
+    const play = document.getElementById("play");
+    const title = document.getElementById("title1");
+    const artist = document.getElementById("artist1");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+
+    const songs=[{
+        name:"v7",
+        title1:"Video1",
+        artist1:"Sharath",
+    },
+    {
+        name:"v8",
+        title1:"Video2",
+        artist1:"Kamal",
+    },
+    {
+        name:"v9",
+        title1:"Song3",
+        artist1:"Sri",
+    }
+]
+
+let isplaying=false;
+const playmusic=()=>{
+    isplaying=true;
+    music.play();
+    play.classList.replace("fa-play-circle","fa-play-circle");
+}
+const pausemusic=()=>{
+    isplaying=false;
+    music.pause();
+    play.classList.replace("fa-pause-circle","fa-play-circle");
+}
+
+play.addEventListener('click',()=>{
+    if(isplaying){
+        pausemusic();
+    }else{
+        playmusic();
+    }
+});
+
+const loadsong = (songs)=>{
+    title1.textContent=songs.title1;
+    artist1.textContent=songs.artist1;
+    music.src="Videos/"+songs.name+".mp4";
+
+}
+
+songIndex=0;
+
+const nextsong=()=>{
+    songIndex = (songIndex + 1) % songs.length;
+    loadsong(songs[songIndex]);
+};
+
+const prevsong=()=>{
+    songIndex = (songIndex - 1 + songs.length) % songs.length;
+    loadsong(songs[songIndex]);
+};
+
+next.addEventListener('click',nextsong);
+prev.addEventListener('click',prevsong);
+
+</script>
+</html>

@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    text-transform: capitalize;
+}
+html{
+    overflow: hidden;
+}
+
+section{
+    min-height: 100vh;
+    padding: 1rem 9%;
+    padding-top: 8rem;
+}
+header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    background-color: black;
+}
+header .logo{
+    font-size: 2.5rem;
+    color: red;
+}
+header .menu a{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    padding: 1rem 1rem;
+    border-radius: .5rem;
+    color: red;
+}
+header .menu a:hover{
+    background-color: yellow;
+    color: black;
+}
+h4{
+    font-size: 2rem;
+    text-align: center;
+    color: red;
+}
+.Home{
+    background-color: rgb(105, 239, 78);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.Home .content{
+    text-align: center;
+    padding: 0rem;
+}
+.Home .content h1{
+    font-size: 2rem;
+    color: rgb(1, 10, 13);
+}
+.sad_music{
+    width: 25rem;
+    height: 2rem;
+    border-right-color: white;
+    border-radius: 2rem;
+    padding: 3rem;
+    text-align: left;
+}
+.sad_music #title2{
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    color: rgb(73, 26, 244);
+    margin: 2rem 0 0.5rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.sad_music #artist2{
+    text-transform: capitalize;
+    letter-spacing: .2rem;
+    color: rgb(64, 6, 254);
+    margin: 2rem 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.sad_img{
+    width: 10rem;
+    height: 10rem;
+    margin: auto;
+    align-items: right;
+}
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.music_sad{
+    color: rgb(1, 1, 8);
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-left: 5rem;
+    
+}
+.music_sad{
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 2rem;
+    
+}
